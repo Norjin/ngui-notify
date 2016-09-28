@@ -2,7 +2,7 @@
     'use strict';
     var app = angular.module('ngui-notify', []);
 
-    app.provider("$nguiConfig", function () {
+    app.provider("$nguiNotifyConfig", function () {
         var baseTemplateUrl = "/tpl-bootstrap";
 
         return {
@@ -66,13 +66,13 @@
         }
     ]);
 
-    app.directive('nguiNotify', ['$nguiConfig', '$nguiNotify',
-        function ($nguiConfig, $nguiNotify) {
+    app.directive('nguiNotify', ['$nguiNotifyConfig', '$nguiNotify',
+        function ($nguiNotifyConfig, $nguiNotify) {
 
             return {
                 restrict: 'A',
                 templateUrl: function (elem, attrs) {
-                    return attrs.templateUrl || $nguiConfig.baseTemplateUrl + '/notify.htm';
+                    return attrs.templateUrl || $nguiNotifyConfig.baseTemplateUrl + '/notify.htm';
                 },
                 link: function (scope, lmt, attr) {
                     scope.$nguiNotify = $nguiNotify;
